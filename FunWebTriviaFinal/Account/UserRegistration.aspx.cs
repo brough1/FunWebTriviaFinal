@@ -32,7 +32,20 @@ namespace FunWebTriviaFinal.Account
 
             List<User> users = UserDA.GetAllUsers();
 
-
+            foreach(User user in users)
+            {
+                if(user.Email == u.Email)
+                {
+                    lblError.Text = "That email is taken, try another one or sign in to your account.";
+                    lblError.Visible = true;
+                    break;
+                }
+                else
+                {
+                    Session["user"] = u;
+                    UserDA.AddUser(u);
+                }
+            }
         }
     }
 }

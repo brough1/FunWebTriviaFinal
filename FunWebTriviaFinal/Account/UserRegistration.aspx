@@ -4,6 +4,9 @@
     <p>
         Sign-up to keep track of all your favorite trivia!</p>
     <p>
+        <asp:Label ID="lblError" runat="server" CssClass="alert-danger" Visible="False"></asp:Label>
+    </p>
+    <p>
         Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
 &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmail" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Must enter an Email"></asp:RequiredFieldValidator>
