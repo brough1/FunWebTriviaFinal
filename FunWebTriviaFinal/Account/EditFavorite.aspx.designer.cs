@@ -10,24 +10,24 @@
 namespace FunWebTriviaFinal.Account {
     
     
-    public partial class Manage {
+    public partial class EditFavorite {
         
         /// <summary>
-        /// successMessage control.
+        /// ddlFavoriteSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder successMessage;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFavoriteSubject;
         
         /// <summary>
-        /// ChangePassword control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink ChangePassword;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

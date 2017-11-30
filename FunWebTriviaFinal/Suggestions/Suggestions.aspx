@@ -11,8 +11,8 @@
                             <asp:Literal runat="server" ID="FailureText" />
                         </p>
                     </asp:PlaceHolder>
-    Email:&nbsp;&nbsp;&nbsp;
-    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+    Email:&nbsp;&nbsp;&nbsp;<asp:Label ID="lblEmailMessage" runat="server" Text="This email was pulled from your account, if you want to use a different email, logoff." Visible="False"></asp:Label>
+&nbsp;<asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
     <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail"
                                 CssClass="text-danger" ErrorMessage="The email field is required." Display="Dynamic" />
     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" CssClass="text-danger" Display="Dynamic" ErrorMessage="You must enter a valid email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>

@@ -12,7 +12,7 @@ namespace FunWebTriviaFinal.Models
         {
             try
             {
-                string connectionString = @"Data Source = (LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-FunWebTriviaFinal-20171030112704.mdf;Initial Catalog=aspnet-FunWebTriviaFinal-20171030112704;Integrated Security=True";
+                string connectionString = @"Data Source =(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\br590523\Documents\FunWebTriviaDB.mdf;Integrated Security=True;Connect Timeout=30" ;
                 SqlConnection connection = new SqlConnection(connectionString);
                 return connection;
             }

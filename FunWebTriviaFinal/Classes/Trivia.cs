@@ -7,30 +7,34 @@ namespace FunWebTriviaFinal.Classes
 {
     public class Trivia
     {
+        private int triviaID;
         private string description;
-        private int day;
-        private int year;
-        private int month;
+        private string day;
+        private string year;
+        private string month;
 
         public Trivia()
         {
                 
         }
 
-        public Trivia(string description, int day, int year, int month)
+        public Trivia(int triviaID, string description, string day, string year, string month)
         {
+            this.triviaID = triviaID;
             this.description = description;
             this.day = day;
             this.year = year;
             this.month = month;
         }
 
+        public int TriviaID { get; set; }
+
         public string Description { get; set; }
 
-        public int Day { get; set; }
+        public string Day { get; set; }
 
-        public int Year { get; set; }
+        public string Year { get; set; }
 
-        public int Month { get; set; }
+        public string Month { get; set; }
     }
 }

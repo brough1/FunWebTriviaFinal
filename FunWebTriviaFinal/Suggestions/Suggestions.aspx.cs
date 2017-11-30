@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using FunWebTriviaFinal.Classes;
 namespace FunWebTriviaFinal.Suggestions
 {
     public partial class Suggestions : System.Web.UI.Page
@@ -14,7 +14,13 @@ namespace FunWebTriviaFinal.Suggestions
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["User"] != null)
+            {
+                User u = (User)Session["User"];
+                txtEmail.Text = u.Email;
+                txtEmail.ReadOnly = true;
+                lblEmailMessage.Visible = true;
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

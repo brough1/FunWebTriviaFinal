@@ -24,11 +24,22 @@ namespace FunWebTriviaFinal.Account
             User u = UserDA.GetUserByLogin(login);
             if (u != null)
             {
-                Session["User"] = u;
+                if (u.Password != password)
+                {
+                    lblError.Text = "Incorrect Email/Password, try again!";
+                    lblError.Visible = true;
+                }
+                else
+                {
+                    Session["userID"] = u.UserID;
+                    Session["User"] = u;
+                    Response.Redirect("~");
+                }
             }
             else
             {
-
+                lblError.Text = "Incorrect Email/Password, try again!";
+                lblError.Visible = true;
             }
         }
     }

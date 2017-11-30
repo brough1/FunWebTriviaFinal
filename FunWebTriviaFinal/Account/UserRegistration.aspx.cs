@@ -22,6 +22,7 @@ namespace FunWebTriviaFinal.Account
             string password = txtPassword.Text;
             string first = txtFirstName.Text;
             string last = txtLastName.Text;
+            string favoriteTopic = ddlFavoriteSubject.SelectedValue;
 
             User u = new User();
 
@@ -29,23 +30,33 @@ namespace FunWebTriviaFinal.Account
             u.Password = password;
             u.FirstName = first;
             u.LastName = last;
+            u.FavoriteTopic = favoriteTopic;
 
             List<User> users = UserDA.GetAllUsers();
-
-            foreach(User user in users)
+            bool noDuplicates = false;
+            foreach (User user in users)
             {
-                if(user.Email == u.Email)
+                if (user.Email == u.Email)
                 {
                     lblError.Text = "That email is taken, try another one or sign in to your account.";
                     lblError.Visible = true;
+                    noDuplicates = false;
                     break;
                 }
                 else
                 {
-                    Session["user"] = u;
-                    UserDA.AddUser(u);
+                    noDuplicates = true;
                 }
             }
+            if (noDuplicates)
+            {
+                UserDA.AddUser(u);
+                User loggedIn = UserDA.GetUserByLogin(u.Email);
+                Session["User"] = loggedIn;
+                Session["UserID"] = loggedIn.UserID;
+                Response.Redirect("~");
+            }    
+            
         }
     }
 }

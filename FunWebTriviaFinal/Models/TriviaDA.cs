@@ -40,5 +40,83 @@ namespace FunWebTriviaFinal.Models
                 connection.Close();
             }
         }
+        public static Trivia GetTriviaByDescription(string d)
+        {
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "Select * from Trivia where Description = @description;";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@description", d);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader read = cmd.ExecuteReader();
+
+                if (read.Read())
+                {
+                    Trivia t = new Trivia();
+
+                    t.TriviaID = (int)read["triviaID"];
+                    t.Description = (String)read["description"];
+                    t.Day = (string)read["day"];
+                    t.Month = (string)read["month"];
+                    t.Year = (string)read["year"];
+
+                    return t;
+                }
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return null;
+        }
+        public static int GetTriviaIDByDescription(string description)
+        {
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "Select triviaID from Trivia where Description = @description;";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@description", description);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader read = cmd.ExecuteReader();
+
+                if (read.Read())
+                {
+                    int t = (int)read["triviaID"];
+
+                    return t;
+                }
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return 0;
+        }
     }
 }

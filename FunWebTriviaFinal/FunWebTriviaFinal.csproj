@@ -183,9 +183,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\EditFavorite.aspx" />
+    <Content Include="Account\EditPassword.aspx" />
+    <Content Include="Account\EditProfile.aspx" />
     <Content Include="Account\UserLogin.aspx" />
+    <Content Include="Account\UserProfile.aspx" />
     <Content Include="Account\UserRegistration.aspx" />
+    <Content Include="Account\userSignOut.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -249,12 +253,26 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Manage.aspx.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
+    <Compile Include="Account\EditFavorite.aspx.cs">
+      <DependentUpon>EditFavorite.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Manage.aspx.designer.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
+    <Compile Include="Account\EditFavorite.aspx.designer.cs">
+      <DependentUpon>EditFavorite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\EditPassword.aspx.cs">
+      <DependentUpon>EditPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\EditPassword.aspx.designer.cs">
+      <DependentUpon>EditPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\UserLogin.aspx.cs">
       <DependentUpon>UserLogin.aspx</DependentUpon>
@@ -263,12 +281,26 @@
     <Compile Include="Account\UserLogin.aspx.designer.cs">
       <DependentUpon>UserLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\UserRegistration.aspx.cs">
       <DependentUpon>UserRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\UserRegistration.aspx.designer.cs">
       <DependentUpon>UserRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\userSignOut.aspx.cs">
+      <DependentUpon>userSignOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\userSignOut.aspx.designer.cs">
+      <DependentUpon>userSignOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -278,9 +310,7 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Classes\Trivia.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Contact.aspx.cs">
@@ -301,7 +331,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Classes\Suggestion.cs" />
     <Compile Include="Models\SuggestionDA.cs" />
     <Compile Include="Models\TriviaDA.cs" />
@@ -314,7 +343,6 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Startup.cs" />
     <Compile Include="Suggestions\Suggestions.aspx.cs">
       <DependentUpon>Suggestions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

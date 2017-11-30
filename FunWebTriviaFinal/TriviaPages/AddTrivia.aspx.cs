@@ -34,9 +34,9 @@ namespace FunWebTriviaFinal.TriviaPages
                 {
                     Trivia t = new Trivia();
                     t.Description = description;
-                    t.Year = year;
-                    t.Day = day;
-                    t.Month = month;
+                    t.Year = year.ToString();
+                    t.Day = day.ToString();
+                    t.Month = month.ToString();
                     TriviaDA.AddTrivia(t);
                     FailureText.Text = "Trivia Added!";
                     ErrorMessage.Visible = true;
@@ -57,9 +57,9 @@ namespace FunWebTriviaFinal.TriviaPages
                 {
                     Trivia t = new Trivia();
                     t.Description = description;
-                    t.Year = year;
-                    t.Day = day;
-                    t.Month = month;
+                    t.Year = year.ToString();
+                    t.Day = day.ToString();
+                    t.Month = month.ToString();
                     TriviaDA.AddTrivia(t);
                     FailureText.Text = "Trivia Added!";
                     ErrorMessage.Visible = true;
@@ -73,9 +73,9 @@ namespace FunWebTriviaFinal.TriviaPages
             {
                 Trivia t = new Trivia();
                 t.Description = description;
-                t.Year = year;
-                t.Day = day;
-                t.Month = month;
+                t.Year = year.ToString();
+                t.Day = day.ToString();
+                t.Month = month.ToString();
                 TriviaDA.AddTrivia(t);
                 FailureText.Text = "Trivia Added!";
                 ErrorMessage.Visible = true;

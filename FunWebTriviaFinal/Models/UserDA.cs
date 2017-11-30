@@ -131,5 +131,141 @@ namespace FunWebTriviaFinal.Models
             }
             return allUsers;
         }
+
+        public static void SaveFavorite(User u, Trivia t)
+        {
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "INSERT INTO Favorites (userID, triviaID) values (@userID, @triviaID)";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@triviaID", t.TriviaID);
+            cmd.Parameters.AddWithValue("@userID", u.UserID);
+
+            try
+            {
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public static bool CheckIfFavorited(User u, Trivia t)
+        {
+            bool exists = false;
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "SELECT COUNT(*) FROM Favorites WHERE userID = @userID AND triviaID = @triviaID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@userID", u.UserID);
+            cmd.Parameters.AddWithValue("@triviaID", t.TriviaID);
+
+            try
+            {
+                connection.Open();
+                int valueExist = (int)cmd.ExecuteScalar();
+
+                if(valueExist > 0)
+                {
+                    exists = true;
+                    return exists;
+                }
+                else
+                {
+                    exists = false;
+                    return exists;
+                }
+                              
+            }
+            catch(SqlException ex)
+            {
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return exists;
+        }
+        public static void DeleteFavorite(int userID, int triviaID)
+        {
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "Delete From Favorites where userID = @userID and triviaID = @triviaID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@triviaID", triviaID);
+            cmd.Parameters.AddWithValue("@userID", userID);
+
+            try
+            {
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        
+        }
+        public static void UpdateUser(User u)
+        {
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "Update Users SET email = @email, password = @password, firstName = @firstName, lastName = @lastName, favoriteTopic = @favoriteTopic WHERE userID = @userID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@email", u.Email);
+            cmd.Parameters.AddWithValue("@password", u.Password);
+            cmd.Parameters.AddWithValue("@firstName", u.FirstName);
+            cmd.Parameters.AddWithValue("@lastName", u.LastName);
+            cmd.Parameters.AddWithValue("@favoriteTopic", u.FavoriteTopic);
+            cmd.Parameters.AddWithValue("@userID", u.UserID);
+
+            try
+            {
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch(SqlException ex)
+            {
+               
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }
