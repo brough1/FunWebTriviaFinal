@@ -22,7 +22,7 @@ namespace FunWebTriviaFinal.Account
 
         protected void btnBasicSubmit_Click(object sender, EventArgs e)
         {
-            if ((string)Session["Changing"] == "Email")
+            if ((string)Session["Changing"] == "email")
             {
                 string changedValue = txtChangedValue.Text;
                 List<User> users = UserDA.GetAllUsers();
@@ -50,7 +50,7 @@ namespace FunWebTriviaFinal.Account
                     Response.Redirect("~/Account/UserProfile");
                 }
             }
-            else if ((string)Session["Changing"] == "First Name")
+            else if ((string)Session["Changing"] == "first name")
             {
                 string changedValue = txtChangedValue.Text;
                 User u = (User)Session["User"];
@@ -59,7 +59,7 @@ namespace FunWebTriviaFinal.Account
                 Session["Message"] = "Name Updated!";
                 Response.Redirect("~/Account/UserProfile");
             }
-            else if ((string)Session["Changing"] == "Last Name")
+            else if ((string)Session["Changing"] == "last name")
             {
                 string changedValue = txtChangedValue.Text;
                 User u = (User)Session["User"];

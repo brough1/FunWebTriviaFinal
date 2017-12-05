@@ -16,11 +16,12 @@ namespace FunWebTriviaFinal.TriviaPages
             if(Session["SuggestionForTrivia"] != null)
             {
                 Trivia t = (Trivia)Session["SuggestionForTrivia"];
-                cmboDay.SelectedValue = t.Day;
-                cmboMonth.SelectedValue = t.Month;
+                cmboDay.SelectedValue = t.Day.ToString();
+                cmboMonth.SelectedValue = t.Month.ToString();
                 txtDescription.Text = HttpUtility.HtmlDecode(t.Description);
-                txtYear.Text = t.Year;
+                txtYear.Text = t.Year.ToString();
                 Session["SuggestionForTrivia"] = null;
+                Session["UserSubmitted"] = true;
             }
         }
 
@@ -42,10 +43,15 @@ namespace FunWebTriviaFinal.TriviaPages
                 {
                     Trivia t = new Trivia();
                     t.Description = description;
-                    t.Year = year.ToString();
-                    t.Day = day.ToString();
-                    t.Month = month.ToString();
+                    t.Year = year;
+                    t.Day = day;
+                    t.Month = month;
                     TriviaDA.AddTrivia(t);
+                    if ((bool)Session["UserSubmitted"])
+                    {
+                        int suggestionID = (int)Session["SuggestionID"];
+                        TriviaDA.AddApprovedSuggestion(suggestionID, t.TriviaID);
+                    }
                     FailureText.Text = "Trivia Added!";
                     ErrorMessage.Visible = true;
                     txtDescription.Text = "";
@@ -63,12 +69,20 @@ namespace FunWebTriviaFinal.TriviaPages
                 }
                 else
                 {
+                    
                     Trivia t = new Trivia();
                     t.Description = description;
-                    t.Year = year.ToString();
-                    t.Day = day.ToString();
-                    t.Month = month.ToString();
+                    t.Year = year;
+                    t.Day = day;
+                    t.Month = month;
                     TriviaDA.AddTrivia(t);
+                    t.TriviaID = TriviaDA.GetTriviaIDByDescription(description);
+                    if ((bool)Session["UserSubmitted"])
+                    {
+                        int suggestionID = Convert.ToInt32(Session["SuggestionID"]);
+                        TriviaDA.AddApprovedSuggestion(suggestionID, t.TriviaID);
+                    }
+
                     FailureText.Text = "Trivia Added!";
                     ErrorMessage.Visible = true;
                     txtDescription.Text = "";
@@ -81,10 +95,15 @@ namespace FunWebTriviaFinal.TriviaPages
             {
                 Trivia t = new Trivia();
                 t.Description = description;
-                t.Year = year.ToString();
-                t.Day = day.ToString();
-                t.Month = month.ToString();
+                t.Year = year;
+                t.Day = day;
+                t.Month = month;
                 TriviaDA.AddTrivia(t);
+                if ((bool)Session["UserSubmitted"])
+                {
+                    int suggestionID = (int)Session["SuggestionID"];
+                    TriviaDA.AddApprovedSuggestion(suggestionID, t.TriviaID);
+                }
                 FailureText.Text = "Trivia Added!";
                 ErrorMessage.Visible = true;
                 txtDescription.Text = "";

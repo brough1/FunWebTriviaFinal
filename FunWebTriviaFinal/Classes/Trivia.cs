@@ -9,16 +9,16 @@ namespace FunWebTriviaFinal.Classes
     {
         private int triviaID;
         private string description;
-        private string day;
-        private string year;
-        private string month;
+        private int day;
+        private int year;
+        private int month;
 
         public Trivia()
         {
                 
         }
 
-        public Trivia(int triviaID, string description, string day, string year, string month)
+        public Trivia(int triviaID, string description, int day, int year, int month)
         {
             this.triviaID = triviaID;
             this.description = description;
@@ -31,10 +31,10 @@ namespace FunWebTriviaFinal.Classes
 
         public string Description { get; set; }
 
-        public string Day { get; set; }
+        public int Day { get; set; }
 
-        public string Year { get; set; }
+        public int Year { get; set; }
 
-        public string Month { get; set; }
+        public int Month { get; set; }
     }
 }

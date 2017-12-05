@@ -13,7 +13,7 @@ namespace FunWebTriviaFinal.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if((string)Session["Changing"] == null)
+            if(Session["User"] == null)
             {
                 Response.Redirect("~");
             }

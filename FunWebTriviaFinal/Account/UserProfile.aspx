@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Your Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="FunWebTriviaFinal.Account.UserProfile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<h2>Your Account</h2>
+    <h2>Your Account</h2>
     <p>
         <asp:Label ID="lblMessage" runat="server" Visible="False"></asp:Label>
     </p>
@@ -71,6 +71,7 @@
                 </table>
             </div>
         </div>
+    <br />
         <div class="col-md-6">
 
             <asp:Panel ID="pnlAdminSection" runat="server" Visible="False">
@@ -82,13 +83,17 @@
             </asp:Panel>
 
         </div>
+    
     <div class="row">
         <h4>Your Favorites</h4>
         <p>
+            <asp:Label ID="lblEmpty" runat="server" Text="You don't have any favorites yet, head over to &lt;a href=&quot;~/TriviaPages/MainTrivia.aspx&quot;&gt;trivia&lt;/a&gt; and select some!" Visible="False"></asp:Label>
+        </p>
+        <p>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" DataKeyNames="userID,triviaID" ForeColor="Black" OnRowDeleting="GridView1_RowDeleting" >
                 <Columns>
-                    <asp:BoundField DataField="userID" HeaderText="userID" SortExpression="userID" ReadOnly="True"/>
-                    <asp:BoundField DataField="triviaID" HeaderText="triviaID" SortExpression="triviaID" ReadOnly="True"/>
+                    <asp:BoundField DataField="userID" HeaderText="userID" SortExpression="userID" ReadOnly="True" Visible="False"/>
+                    <asp:BoundField DataField="triviaID" HeaderText="triviaID" SortExpression="triviaID" ReadOnly="True" Visible="False"/>
                     <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
                     <asp:BoundField DataField="day" HeaderText="day" SortExpression="day" />
                     <asp:BoundField DataField="month" HeaderText="month" SortExpression="month" />

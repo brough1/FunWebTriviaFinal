@@ -58,15 +58,15 @@ namespace FunWebTriviaFinal.TriviaPages
         protected void ddDay_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList dd = (DropDownList)sender;
-            if(dd.SelectedItem.Text != " ")
+            if(dd.SelectedItem.Text != "0")
             {
                 if (filter.ContainsKey("Day"))
                 {
-                    filter["Day"] = "='" + dd.SelectedValue + "'";
+                    filter["Day"] = "='" + dd.SelectedValue.ToString() + "'";
                 }
                 else
                 {
-                    filter.Add("Day", "='" + dd.SelectedValue + "'");
+                    filter.Add("Day", "='" + dd.SelectedValue.ToString() + "'");
                 }
             }
             else
@@ -98,15 +98,15 @@ namespace FunWebTriviaFinal.TriviaPages
         protected void ddMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList dd = (DropDownList)sender;
-            if (dd.SelectedItem.Text != " ")
+            if (dd.SelectedItem.Text != "0")
             {
                 if (filter.ContainsKey("Month"))
                 {
-                    filter["Month"] = "='" + dd.SelectedValue + "'";
+                    filter["Month"] = "='" + dd.SelectedValue.ToString() + "'";
                 }
                 else
                 {
-                    filter.Add("Month", "='" + dd.SelectedValue + "'");
+                    filter.Add("Month", "='" + dd.SelectedValue.ToString() + "'");
                 }
             }
             else
@@ -138,15 +138,15 @@ namespace FunWebTriviaFinal.TriviaPages
         protected void ddYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList dd = (DropDownList)sender;
-            if (dd.SelectedItem.Text != " ")
+            if (dd.SelectedItem.Text != "0")
             {
                 if (filter.ContainsKey("Year"))
                 {
-                    filter["Year"] = "='" + dd.SelectedValue + "'";
+                    filter["Year"] = "='" + dd.SelectedValue.ToString() + "'";
                 }
                 else
                 {
-                    filter.Add("Year", "='" + dd.SelectedValue + "'");
+                    filter.Add("Year", "='" + dd.SelectedValue.ToString() + "'");
                 }
             }
             else

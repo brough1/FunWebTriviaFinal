@@ -40,6 +40,35 @@ namespace FunWebTriviaFinal.Models
                 connection.Close();
             }
         }
+        public static void AddApprovedSuggestion(int suggestionID, int triviaID)
+        {
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "INSERT INTO ApprovedSuggestions VALUES (@suggestionID, @triviaID);";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@suggestionID", suggestionID);
+            cmd.Parameters.AddWithValue("@triviaID", triviaID);           
+
+
+            try
+            {
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
         public static Trivia GetTriviaByDescription(string d)
         {
             SqlConnection connection = Connection.getConnection();
@@ -61,9 +90,9 @@ namespace FunWebTriviaFinal.Models
 
                     t.TriviaID = (int)read["triviaID"];
                     t.Description = (String)read["description"];
-                    t.Day = (string)read["day"];
-                    t.Month = (string)read["month"];
-                    t.Year = (string)read["year"];
+                    t.Day = (int)read["day"];
+                    t.Month = (int)read["month"];
+                    t.Year = (int)read["year"];
 
                     return t;
                 }
@@ -119,7 +148,7 @@ namespace FunWebTriviaFinal.Models
             return 0;
         }
 
-        public static Trivia GetTriviaByDayAndMonth(string day, string month)
+        public static Trivia GetTriviaByDayAndMonth(int day, int month)
         {
             SqlConnection connection = Connection.getConnection();
 
@@ -141,7 +170,7 @@ namespace FunWebTriviaFinal.Models
                     t.Day = day;
                     t.Month = month;
                     t.Description = (string)read["description"];
-                    t.Year = (string)read["year"];
+                    t.Year = (int)read["year"];
                     t.TriviaID = (int)read["triviaID"];
                     return t;
                 }

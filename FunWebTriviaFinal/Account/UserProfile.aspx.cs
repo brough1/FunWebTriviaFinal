@@ -36,6 +36,10 @@ namespace FunWebTriviaFinal.Account
             lblEmail.Text = user.Email;
             lblLastName.Text = user.LastName;
             lblFavorite.Text = user.FavoriteTopic;
+            if(GridView1.Rows.Count == 0)
+            {
+                lblEmpty.Visible = true;
+            }
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -61,21 +65,21 @@ namespace FunWebTriviaFinal.Account
         protected void btnFirstNameChange_Click(object sender, EventArgs e)
         {
             User user = (User)Session["User"];
-            Session["Changing"] = "First Name";
+            Session["Changing"] = "first name";
             Response.Redirect("~/Account/EditProfile");
         }
 
         protected void btnLastNameChange_Click(object sender, EventArgs e)
         {
             User user = (User)Session["User"];
-            Session["Changing"] = "Last Name";
+            Session["Changing"] = "last name";
             Response.Redirect("~/Account/EditProfile");
         }
 
         protected void btnFavoriteChange_Click(object sender, EventArgs e)
         {
             User user = (User)Session["User"];
-            Response.Redirect("~/Account/EditProfile");
+            Response.Redirect("~/Account/EditFavorite");
         }
 
         protected void btnPasswordChange_Click(object sender, EventArgs e)

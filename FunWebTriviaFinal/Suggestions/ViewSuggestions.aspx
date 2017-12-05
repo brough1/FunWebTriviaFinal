@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <h2>Suggestions For Review</h2>
+    <p>
+        <asp:Label ID="lblError" runat="server" Text="There are currently no suggestions to view!" Visible="False"></asp:Label>
+    </p>
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="suggestionID" DataSourceID="SqlDataSource2" CellPadding="4" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
@@ -24,7 +27,7 @@
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:FunWebTriviaDBConnectionString %>" DeleteCommand="DELETE FROM [Suggestions] WHERE [suggestionID] = @original_suggestionID AND [description] = @original_description AND [email] = @original_email AND [day] = @original_day AND [month] = @original_month AND [year] = @original_year" InsertCommand="INSERT INTO [Suggestions] ([description], [email], [day], [month], [year]) VALUES (@description, @email, @day, @month, @year)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Suggestions]" UpdateCommand="UPDATE [Suggestions] SET [description] = @description, [email] = @email, [day] = @day, [month] = @month, [year] = @year WHERE [suggestionID] = @original_suggestionID AND [description] = @original_description AND [email] = @original_email AND [day] = @original_day AND [month] = @original_month AND [year] = @original_year">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:FunWebTriviaDBConnectionString %>" DeleteCommand="DELETE FROM [Suggestions] WHERE [suggestionID] = @original_suggestionID AND [description] = @original_description AND [email] = @original_email AND [day] = @original_day AND [month] = @original_month AND [year] = @original_year" InsertCommand="INSERT INTO [Suggestions] ([description], [email], [day], [month], [year]) VALUES (@description, @email, @day, @month, @year)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Suggestions] as s LEFT JOIN [ApprovedSuggestions] as a on s.suggestionID = a.suggestionID Where a.suggestionID IS NULL" UpdateCommand="UPDATE [Suggestions] SET [description] = @description, [email] = @email, [day] = @day, [month] = @month, [year] = @year WHERE [suggestionID] = @original_suggestionID AND [description] = @original_description AND [email] = @original_email AND [day] = @original_day AND [month] = @original_month AND [year] = @original_year">
         <DeleteParameters>
             <asp:Parameter Name="original_suggestionID" Type="Int32" />
             <asp:Parameter Name="original_description" Type="String" />

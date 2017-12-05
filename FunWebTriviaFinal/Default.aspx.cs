@@ -14,8 +14,8 @@ namespace FunWebTriviaFinal
         protected void Page_Load(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
-            string day = now.Day.ToString();
-            string month = now.Month.ToString();
+            int day = now.Day;
+            int month = now.Month;
 
             Trivia todaysFact = TriviaDA.GetTriviaByDayAndMonth(day, month);
 
