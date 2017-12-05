@@ -17,6 +17,7 @@ namespace FunWebTriviaFinal.TriviaPages
         protected void Page_Load(object sender, EventArgs e)
         {                        
             filter = ViewState["FilterArgs"] == null ? new Hashtable() : (Hashtable)ViewState["FilterArgs"];
+            
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, GridViewCommandEventArgs e)

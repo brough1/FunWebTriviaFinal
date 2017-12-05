@@ -13,7 +13,15 @@ namespace FunWebTriviaFinal.TriviaPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["SuggestionForTrivia"] != null)
+            {
+                Trivia t = (Trivia)Session["SuggestionForTrivia"];
+                cmboDay.SelectedValue = t.Day;
+                cmboMonth.SelectedValue = t.Month;
+                txtDescription.Text = HttpUtility.HtmlDecode(t.Description);
+                txtYear.Text = t.Year;
+                Session["SuggestionForTrivia"] = null;
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

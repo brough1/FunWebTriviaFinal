@@ -118,5 +118,47 @@ namespace FunWebTriviaFinal.Models
             }
             return 0;
         }
+
+        public static Trivia GetTriviaByDayAndMonth(string day, string month)
+        {
+            SqlConnection connection = Connection.getConnection();
+
+            String query = "Select * from Trivia where day = @day AND month = @month;";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@day", day);
+            cmd.Parameters.AddWithValue("@month", month);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader read = cmd.ExecuteReader();
+
+                if (read.Read())
+                {
+                    Trivia t = new Trivia();
+                    t.Day = day;
+                    t.Month = month;
+                    t.Description = (string)read["description"];
+                    t.Year = (string)read["year"];
+                    t.TriviaID = (int)read["triviaID"];
+                    return t;
+                }
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return null;
+        }
     }
 }
