@@ -52,7 +52,6 @@ namespace FunWebTriviaFinal.Account
             lblMessage.Text = "Favorite Deleted!";
             lblMessage.Visible = true;
 
-
         }
 
         protected void btnEmailChange_Click(object sender, EventArgs e)
